@@ -1,0 +1,26 @@
+<h2>Add Employee</h2>
+<form (ngSubmit)="onAddEmployee()" #empForm="ngForm">
+
+  <label for="name">Name:</label>
+  <input type="text" id="name" [(ngModel)]="newEmployee.name" name="name" required />
+
+  <label for="salary">Salary:</label>
+  <input type="number" id="salary" [(ngModel)]="newEmployee.salary" name="salary" required />
+
+  <button type="submit" [disabled]="empForm.invalid">Add Employee</button>
+</form>
+
+<div *ngIf="addError" style="color:red">{{ addError }}</div>
+<div *ngIf="addSuccess" style="color:green">{{ addSuccess }}</div>
+
+<hr>
+
+<h2>Employee List</h2>
+
+<div *ngIf="errorMessage" style="color:red">{{ errorMessage }}</div>
+
+<ul>
+  <li *ngFor="let emp of employees">
+    {{ emp.id }} - {{ emp.name }}
+  </li>
+</ul>
