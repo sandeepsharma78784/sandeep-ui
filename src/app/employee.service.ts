@@ -25,4 +25,32 @@ export class EmployeeService {
    addEmployee(employee: Employee): Observable<Employee> {
     return this.http.post<Employee>(this.apiUrl, employee);
   }
+
+  addEmployeeToAuthDB(): Observable<any> {
+    let k ={
+  "username": "sandeep",
+  "email": "sandeep@example.com",
+  "passwordHash": "hashed_pw",
+  "role": "USER",
+  "subscription": "FREE"
+}
+
+    
+    return this.http.post<Employee>('http://localhost:8080/api/users', k);
+  }
+
+
+   login(): Observable<any> {
+    let k ={
+  "username": "sandeep",
+  "email": "sandeep@example.com",
+  "password": "hashed_pw",
+}
+
+    
+    return this.http.post<Employee>('http://localhost:8080/api/auth/login', k);
+  }
+
+  
+
 }

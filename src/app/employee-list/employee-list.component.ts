@@ -47,4 +47,26 @@ export class EmployeeListComponent implements OnInit {
       }
     });
   }
+
+  addEmployeeToAuthDB() {
+    this.employeeService.addEmployeeToAuthDB().subscribe({
+      next: (data) => {
+      alert(data);
+      },
+      error: (err) => {
+        this.addError = 'Failed to add employee.';
+      }
+    });
+  }
+
+login() {
+    this.employeeService.login().subscribe({
+      next: (data) => {
+      alert(data);
+      },
+      error: (err) => {
+        this.addError = 'Failed to add employee.';
+      }
+    });
+  }
 }

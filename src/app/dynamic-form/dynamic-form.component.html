@@ -1,0 +1,18 @@
+<div>
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    @for (control of controls; track control) {
+      <div class="form-row">
+        <app-control [control]="control" [form]="form"></app-control>
+        <!-- <app-control [control]="control" ></app-control> -->
+      </div>
+    }
+    <div class="form-row">
+      <button type="submit" [disabled]="!form.valid">Save</button>
+    </div>
+  </form>
+  @if (payLoad) {
+    <div class="form-row">
+      <strong>Saved the following values</strong><br>{{ payLoad }}
+    </div>
+  }
+</div>

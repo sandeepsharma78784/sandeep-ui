@@ -9,7 +9,7 @@
 
   <button type="submit" [disabled]="empForm.invalid">Add Employee</button>
 </form>
-
+addEmployeeToAuthDB
 <div *ngIf="addError" style="color:red">{{ addError }}</div>
 <div *ngIf="addSuccess" style="color:green">{{ addSuccess }}</div>
 
@@ -24,3 +24,6 @@
     {{ emp.id }} - {{ emp.name }}
   </li>
 </ul>
+
+  <button type="button" (click)="addEmployeeToAuthDB()">Add Employee to Auth db</button>
+  <button type="button" (click)="login()">Login</button>
