@@ -10,6 +10,44 @@
           <option [value]="opt.key">{{ opt.value }}</option>
         }
         </select>
+      } @case ('autocomplete') {
+        <div class="autocomplete-container">
+          <!-- <input [id]="control.key" 
+                type="text"
+                [value]="currentInputValue"
+                (input)="onInputChangeWithCustom($event)"
+                (focus)="onFocus()"
+                (focusout)="onFocusOut($event)"
+                > -->
+                 <input [id]="control.key" 
+                type="text"
+                [value]="currentInputValue"
+                (input)="onInputChangeWithCustom($event)"
+                (focus)="onFocus()"
+                (focusout)="onFocusOut($event)"
+                >
+          
+          @if (showDropdown && (filteredOptions.length > 0 || showCustomOption)) {
+            <div class="options-dropdown">
+              @for (opt of filteredOptions; track opt) {
+                <div class="option-item" (click)="selectOption(opt)">
+                  {{ opt.value }}
+                </div>
+              }
+              @if (showCustomOption) {
+                <div class="option-item custom-option">
+                  <div class="custom-option-content">
+                    <input type="checkbox" 
+                           [checked]="isCustomValueChecked"
+                           (change)="toggleCustomValue($event)"
+                           id="custom-{{control.key}}">
+                    <span class="custom-text">Use custom value: "{{ currentInputValue }}"</span>
+                  </div>
+                </div>
+              }
+            </div>
+          }
+        </div>
       }
     }
   </div>

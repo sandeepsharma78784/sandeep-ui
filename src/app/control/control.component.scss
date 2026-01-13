@@ -1,0 +1,127 @@
+:host {
+  display: block;
+  width: 90%;
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+  }
+}
+
+.autocomplete-container {
+  position: relative;
+  width: 100%;
+  
+  input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    
+    &:focus {
+      outline: none;
+      border-color: #4a90e2;
+      box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+    }
+  }
+
+  .options-dropdown {
+    position: absolute;
+    width: 100%;
+    margin-top: 4px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+
+    .option-item {
+      padding: 8px 12px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      color: #333;
+      font-size: 14px;
+
+      &:hover {
+        background-color: #f5f7fa;
+      }
+
+      &:not(:last-child) {
+        border-bottom: 1px solid #eee;
+      }
+
+      &.custom-option {
+        padding: 0;
+        
+        .custom-option-content {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 12px;
+          
+          input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin: 0;
+            cursor: pointer;
+            accent-color: #4a90e2;
+            pointer-events: auto;
+          }
+
+          .custom-text {
+            flex: 1;
+            pointer-events: none;
+            color: #666;
+          }
+        }
+      }
+    }
+    
+    label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      margin: 0;
+      cursor: pointer;
+      color: #333;
+      font-weight: normal;
+      transition: background-color 0.2s;
+      
+      &:hover {
+        background-color: #f5f7fa;
+      }
+      
+      input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        margin: 0;
+        cursor: pointer;
+        accent-color: #4a90e2;
+      }
+    }
+  }
+}
+
+// Style for all inputs and selects in the form
+:host ::ng-deep {
+  input, select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    
+    &:focus {
+      outline: none;
+      border-color: #4a90e2;
+      box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+    }
+  }
+}

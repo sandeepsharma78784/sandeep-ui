@@ -13,6 +13,21 @@ export class ControlService {
     // const controls: ControlBase<string>[] = 
     return of( [
       {
+        key: 'country',
+        label: 'Select Country',
+        options: [
+          {key: 'usa', value: 'United States'},
+          {key: 'uk', value: 'United Kingdom'},
+          {key: 'can', value: 'Canada'},
+          {key: 'aus', value: 'Australia'},
+          {key: 'ger', value: 'Germany'},
+          {key: 'fra', value: 'France'},
+          {key: 'ind', value: 'India'}
+        ],
+        order: 1,
+        controlType: 'autocomplete',
+      },
+      { 
         key: 'favoriteAnimal',
         label: 'Favorite Animal',
         options: [

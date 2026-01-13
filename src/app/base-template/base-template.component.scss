@@ -1,0 +1,59 @@
+//pol-rem(10) = 1rem
+
+:host,
+.base-template-container {
+    display: grid;
+    grid-template-columns: 1fr; // It creates a single-column grid layout
+    //grid-template-rows: pol-rem(48) calc(100vh - pol-rem(48)); // Header height and remaining viewport height
+    grid-template-rows: 4.8rem calc(97vh - 4.8rem); // Header height and remaining viewport height[ it is calculated as total-height - header-height ]
+    min-height: 97vh; // Ensure it takes full viewport height
+    height: 97vh; // Ensure it takes full viewport height
+    padding: 0; // No padding
+    margin: 0; // No margin
+    // background-color: yellow;
+    // note abhi 97 kiya he but 100vh hona chahiye tha, but kuch browsers me bottom me scrollbar aa rha tha isliye 97vh kiya he
+}
+
+// ab header ko 4.8 rem mil gaya height and with full mila, ab header ki css
+.base-template-header-container {
+    display: grid;
+    height: 4.8rem; // Fixed height for header
+    min-height: 4.8rem; // Fixed height for header
+    background-color: pink;
+}
+
+// ye header k i niche wala hisaa jiski height calculate ho rhi hai 100vh - 4.8rem
+.base-template-scroll-container{
+display: grid;
+overflow-y: auto; // Enable vertical scrolling if content overflows
+overflow-x: hidden; // Prevent horizontal scrolling
+//height: calc(100vh - 4.8rem); // Remaining height after header, esa hona chahiye but
+height: calc(94vh - 4.8rem); // Remaining height after header , to avoid bottom scrollbar issue in some browsers
+& > base-template-main {
+    width: 100vw; // Full viewport width
+    & > div-base-template-section{
+        display: grid;
+        gap: 1.4rem; // Space between sections
+        padding: 3.2rem 6.4rem; // Padding around sections
+        grid-template-columns: 1fr; // Single column layout
+        grid-template-rows: min-content max-content min-content; // Rows adjust based on content
+        // @include breakpoint-mobile{
+        //     grid-template-columns: min-content ; // Single column layout for mobile
+        //     grid-template-rows: min-content min-content min-content; // Rows adjust based on content for mobile
+        //     margin-right:  0rem; // No right margin for mobile
+        // }
+    }
+}
+}
+
+nav[content] { // ye sidebar k liye hai
+    min-width: 20vh; // Minimum width for sidebar
+    justify-self: end;// Align sidebar to the end (right side)
+    gap: 1.6rem; // Space between sidebar items
+
+
+}
+
+footer {
+    align-self: flex-end; // Align footer to the bottom
+}
