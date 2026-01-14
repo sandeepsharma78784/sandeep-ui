@@ -19,6 +19,7 @@ export class EmployeeService {
   constructor(private http: HttpClient) { }
 
   getEmployees(): Observable<Employee[]> {
+    alert("get employees called");
     return this.http.get<Employee[]>(this.apiUrl);
   }
 

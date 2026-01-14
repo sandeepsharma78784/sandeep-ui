@@ -26,12 +26,18 @@ export class EmployeeListComponent implements OnInit {
   constructor(private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
-    this.employeeService.getEmployees().subscribe({
-      next: (data) => this.employees = data,
-      error: (error) => this.errorMessage = 'Could not load employees.'
-    });
+    
   }
 
+  getEmployees() {
+    this.employeeService.getEmployees().subscribe({
+      next: (data) => this.employees = data,
+      error: (error) => {
+        console.log('Error fetching employees:', error);
+        this.errorMessage = 'Could not load employees.'
+      }
+    });
+  }
   onAddEmployee() {
     this.addError = '';
     this.addSuccess = '';
@@ -48,6 +54,8 @@ export class EmployeeListComponent implements OnInit {
     });
   }
 
+
+  // yaha ab hum vo signup wala kaa krege kyuki hum onpremise nai auth0 ka db use krre hai
   addEmployeeToAuthDB() {
     this.employeeService.addEmployeeToAuthDB().subscribe({
       next: (data) => {
